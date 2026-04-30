@@ -13,7 +13,7 @@ export async function getAvailableSlots(date: Date, procedureIds: string[]) {
     where: { id: { in: procedureIds } }
   });
   
-  const totalDuration = procedures.reduce((acc, curr) => acc + curr.duration, 0);
+  const totalDuration = procedures.reduce((acc: number, curr: any) => acc + curr.duration, 0);
   const buffer = 5; // 5 minute buffer as requested
   
   // 2. Get existing bookings for that day

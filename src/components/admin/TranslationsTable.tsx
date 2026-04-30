@@ -64,7 +64,7 @@ export default function TranslationsTable({ initialData }: { initialData: any[] 
                 </td>
               </tr>
             )}
-            {data.map((item) => (
+            {data.map((item: any) => (
               editingKey === item.key ? (
                 <tr key={item.key} className={styles.editingRow}>
                   <td>{item.key}</td>

@@ -9,7 +9,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   adapter: PrismaAdapter(db),
   providers: [
-    ...authConfig.providers.filter(p => p.id !== "credentials"),
+    ...authConfig.providers.filter((p: any) => p.id !== "credentials"),
     Credentials({
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;

@@ -6,7 +6,7 @@ export async function getTranslations(lang: Locale) {
   const translations = await db.translation.findMany();
   const dict: Record<string, string> = {};
   
-  translations.forEach((t) => {
+  translations.forEach((t: any) => {
     dict[t.key] = (t as any)[lang] || (t as any)["en"] || t.key;
   });
   

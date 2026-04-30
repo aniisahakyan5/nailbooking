@@ -32,7 +32,7 @@ export default function BookingWizard({ lang, dict }: { lang: string, dict: any 
 
   const handleProcedureToggle = (id: string) => {
     setSelectedProcedures(prev => 
-      prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((p: string) => p !== id) : [...prev, id]
     );
   };
 
