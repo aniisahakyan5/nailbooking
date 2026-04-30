@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.table td {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--glass-border);
+  font-size: 0.95rem;
+  vertical-align: top;
+}
+
+.keyCell {
+  font-family: monospace;
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: var(--glass);
+  opacity: 0.7;
+}
+
+.actions button:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.deleteBtn:hover {
+  color: var(--error);
+}
+
+.saveBtn {
+  color: var(--success) !important;
+}
+
+.editingRow input, .editingRow textarea {
+  width: 100%;
+  background: var(--background);
+  border: 1px solid var(--primary);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.editingRow textarea {
+  min-height: 80px;
+  resize: vertical;
+}
