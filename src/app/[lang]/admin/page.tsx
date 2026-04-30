@@ -3,7 +3,9 @@ import { format } from "date-fns";
 import styles from "./dashboard.module.css";
 import { Calendar, Users, Scissors, TrendingUp } from "lucide-react";
 
-export default async function AdminDashboard() {
+export default async function AdminDashboard({ params }: { params: Promise<{ lang: string }> }) {
+  await params;
+
   const bookingsCount = await db.booking.count();
   const customersCount = await db.user.count({ where: { role: "CLIENT" } });
   const proceduresCount = await db.procedure.count();

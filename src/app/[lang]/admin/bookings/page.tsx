@@ -1,5 +1,7 @@
 import BookingsAdmin from "@/components/admin/BookingsAdmin";
 
-export default function BookingsPage() {
+export default async function BookingsPage({ params }: { params: Promise<{ lang: string }> }) {
+  await params;
+
   return <BookingsAdmin />;
 }
