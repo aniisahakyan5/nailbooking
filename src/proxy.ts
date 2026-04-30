@@ -1,6 +1,9 @@
-import { auth } from "@/auth";
+import NextAuth from "next-auth";
+import { authConfig } from "./auth.config";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+
+const { auth } = NextAuth(authConfig);
 
 const locales = ["en", "ru", "hy"];
 const defaultLocale = "hy";
@@ -15,7 +18,6 @@ export default auth((req: NextRequest & { auth: any }) => {
   );
 
   if (!pathnameHasLocale) {
-    // Redirect to default locale
     return NextResponse.redirect(
       new URL(`/${defaultLocale}${pathname}`, nextUrl)
     );
@@ -34,7 +36,6 @@ export default auth((req: NextRequest & { auth: any }) => {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next)
     "/((?!api|_next/static|_next/image|favicon.ico).*)",
   ],
 };

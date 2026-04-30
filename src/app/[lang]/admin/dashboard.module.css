@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.stats :global(.glass-card) {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.stats svg {
+  color: var(--primary);
+  width: 32px;
+  height: 32px;
+}
+
+.stats h3 {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 0.2rem;
+}
+
+.stats p {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.recent {
+  margin-top: 2rem;
+}
+
+.recent h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table td {
+  padding: 1.2rem;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.9rem;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
