@@ -37,7 +37,7 @@ export async function getAvailableSlots(date: Date, procedureIds: string[]) {
     const slotEnd = addMinutes(currentSlot, totalDuration);
     
     // Check if slot overlaps with any existing booking
-    const isOverlap = bookings.some(b => {
+    const isOverlap = bookings.some((b: any) => {
       return (
         (isAfter(slotEnd, b.startTime) && isBefore(currentSlot, b.endTime)) ||
         (currentSlot.getTime() === b.startTime.getTime())
@@ -71,7 +71,7 @@ export async function createBooking(data: {
     where: { id: { in: data.procedureIds } }
   });
   
-  const totalDuration = procedures.reduce((acc, curr) => acc + curr.duration, 0);
+  const totalDuration = procedures.reduce((acc: number, curr: any) => acc + curr.duration, 0);
   const endTime = addMinutes(data.startTime, totalDuration);
 
   // Re-verify availability
