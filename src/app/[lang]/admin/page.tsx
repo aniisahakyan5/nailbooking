@@ -49,7 +49,7 @@ export default async function AdminDashboard({ params }: { params: Promise<{ lan
         <div className="glass-card" style={{ padding: 0 }}>
           <table className={styles.table}>
             <tbody>
-              {recentBookings.map(b => (
+              {recentBookings.map((b: any) => (
                 <tr key={b.id}>
                   <td>{format(b.createdAt, "MMM dd")}</td>
                   <td>{b.user.name} booked {b.procedure.nameKey}</td>

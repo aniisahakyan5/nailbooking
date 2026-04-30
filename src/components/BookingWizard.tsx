@@ -58,7 +58,7 @@ export default function BookingWizard({ lang, dict }: { lang: string, dict: any 
   return (
     <div className={styles.wizard}>
       <div className={styles.steps}>
-        {[1, 2, 3].map(s => (
+        {[1, 2, 3].map((s: number) => (
           <div key={s} className={`${styles.stepIndicator} ${step >= s ? styles.activeStep : ""}`}>
             {s}
           </div>
@@ -69,7 +69,7 @@ export default function BookingWizard({ lang, dict }: { lang: string, dict: any 
         <div className="animate-fade-in">
           <h2>{dict["select_procedures"] || "Select Procedures"}</h2>
           <div className={styles.list}>
-            {procedures.map(p => (
+            {procedures.map((p: any) => (
               <div 
                 key={p.id} 
                 className={`${styles.item} ${selectedProcedures.includes(p.id) ? styles.selected : ""}`}
@@ -98,7 +98,7 @@ export default function BookingWizard({ lang, dict }: { lang: string, dict: any 
         <div className="animate-fade-in">
           <h2>{dict["choose_date_time"] || "Choose Date & Time"}</h2>
           <div className={styles.datePicker}>
-            {[0, 1, 2, 3, 4, 5, 6].map(i => {
+            {[0, 1, 2, 3, 4, 5, 6].map((i: number) => {
               const d = addDays(new Date(), i);
               return (
                 <div 
@@ -117,7 +117,7 @@ export default function BookingWizard({ lang, dict }: { lang: string, dict: any 
             <div className={styles.center}><Loader2 className={styles.spin} /></div>
           ) : (
             <div className={styles.slotsGrid}>
-              {availableSlots.map(s => (
+              {availableSlots.map((s: any) => (
                 <button
                   key={s.time}
                   disabled={!s.available}

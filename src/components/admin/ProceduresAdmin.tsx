@@ -80,7 +80,7 @@ export default function ProceduresAdmin({ initialData }: { initialData: any[] })
       )}
 
       <div className={styles.grid}>
-        {initialData.map(p => (
+        {initialData.map((p: any) => (
           <div key={p.id} className="glass-card">
             <div className={styles.cardHeader}>
               <h3>{p.nameKey}</h3>

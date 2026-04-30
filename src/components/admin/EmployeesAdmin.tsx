@@ -53,7 +53,7 @@ export default function EmployeesAdmin({ initialData }: { initialData: any[] }) 
       )}
 
       <div className={styles.grid}>
-        {initialData.map(emp => (
+        {initialData.map((emp: any) => (
           <div key={emp.id} className="glass-card">
             <div className={styles.cardHeader}>
               <div>

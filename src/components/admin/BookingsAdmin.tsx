@@ -47,7 +47,7 @@ export default function BookingsAdmin() {
               </tr>
             </thead>
             <tbody>
-              {bookings.map(b => (
+              {bookings.map((b: any) => (
                 <tr key={b.id}>
                   <td>
                     <div className={styles.timeInfo}>
