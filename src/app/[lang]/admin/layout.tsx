@@ -9,13 +9,14 @@ export default async function AdminLayout({
   params
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
+  const { lang } = await params;
   const session = await auth();
   
   // Extra safety check despite middleware
   if (!session?.user || (session.user as any).role === "CLIENT") {
-    redirect(`/${params.lang}`);
+    redirect(`/${lang}`);
   }
 
   return (
@@ -23,12 +24,12 @@ export default async function AdminLayout({
       <aside className={styles.sidebar}>
         <div className={styles.logo}>BEGUMYAN BO</div>
         <nav className={styles.nav}>
-          <Link href={`/${params.lang}/admin`}><LayoutDashboard size={20} /> Dashboard</Link>
-          <Link href={`/${params.lang}/admin/translations`}><Languages size={20} /> Translations</Link>
-          <Link href={`/${params.lang}/admin/procedures`}><Scissors size={20} /> Procedures</Link>
-          <Link href={`/${params.lang}/admin/bookings`}><Calendar size={20} /> Bookings</Link>
-          <Link href={`/${params.lang}/admin/customers`}><Users size={20} /> Customers</Link>
-          <Link href={`/${params.lang}/admin/employees`}><ShieldCheck size={20} /> Administration</Link>
+          <Link href={`/${lang}/admin`}><LayoutDashboard size={20} /> Dashboard</Link>
+          <Link href={`/${lang}/admin/translations`}><Languages size={20} /> Translations</Link>
+          <Link href={`/${lang}/admin/procedures`}><Scissors size={20} /> Procedures</Link>
+          <Link href={`/${lang}/admin/bookings`}><Calendar size={20} /> Bookings</Link>
+          <Link href={`/${lang}/admin/customers`}><Users size={20} /> Customers</Link>
+          <Link href={`/${lang}/admin/employees`}><ShieldCheck size={20} /> Administration</Link>
         </nav>
       </aside>
       <main className={styles.content}>

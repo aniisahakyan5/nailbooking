@@ -3,13 +3,14 @@ import BookingWizard from "@/components/BookingWizard";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
-export default async function BookPage({ params }: { params: { lang: Locale } }) {
-  const dict = await getTranslations(params.lang);
+export default async function BookPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getTranslations(lang);
 
   return (
     <main style={{ padding: '2rem 5%' }}>
       <header style={{ marginBottom: '3rem' }}>
-        <Link href={`/${params.lang}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.6 }}>
+        <Link href={`/${lang}`} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.6 }}>
           <ChevronLeft size={20} /> {dict["back_to_home"] || "Back to Home"}
         </Link>
       </header>
@@ -19,7 +20,7 @@ export default async function BookPage({ params }: { params: { lang: Locale } })
         {dict["book_subtitle"] || "Select your desired services and find a convenient time slot."}
       </p>
 
-      <BookingWizard lang={params.lang} dict={dict} />
+      <BookingWizard lang={lang} dict={dict} />
     </main>
   );
 }

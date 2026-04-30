@@ -2,21 +2,22 @@ import { getTranslations, Locale } from "@/lib/i18n";
 import Link from "next/link";
 import styles from "./page.module.css";
 
-export default async function LandingPage({ params }: { params: { lang: Locale } }) {
-  const dict = await getTranslations(params.lang);
+export default async function LandingPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params;
+  const dict = await getTranslations(lang);
 
   return (
     <main className={styles.container}>
       <header className={styles.header}>
         <div className={styles.logo}>BEGUMYAN NAIL</div>
         <nav className={styles.nav}>
-          <Link href={`/${params.lang}/book`} className="btn-primary">
+          <Link href={`/${lang}/book`} className="btn-primary">
             {dict["book_now"] || "Book Now"}
           </Link>
           <div className={styles.langPicker}>
-            <Link href="/en" className={params.lang === "en" ? styles.activeLang : ""}>EN</Link>
-            <Link href="/ru" className={params.lang === "ru" ? styles.activeLang : ""}>RU</Link>
-            <Link href="/hy" className={params.lang === "hy" ? styles.activeLang : ""}>ՀԱՅ</Link>
+            <Link href="/en" className={lang === "en" ? styles.activeLang : ""}>EN</Link>
+            <Link href="/ru" className={lang === "ru" ? styles.activeLang : ""}>RU</Link>
+            <Link href="/hy" className={lang === "hy" ? styles.activeLang : ""}>ՀԱՅ</Link>
           </div>
         </nav>
       </header>
@@ -25,7 +26,7 @@ export default async function LandingPage({ params }: { params: { lang: Locale }
         <div className="animate-fade-in">
           <h1 className="gradient-text">{dict["hero_title"] || "Elevate Your Elegance"}</h1>
           <p>{dict["hero_subtitle"] || "Premium nail care and beauty procedures in the heart of Armenia."}</p>
-          <Link href={`/${params.lang}/book`} className="btn-primary" style={{ marginTop: '2rem', display: 'inline-block' }}>
+          <Link href={`/${lang}/book`} className="btn-primary" style={{ marginTop: '2rem', display: 'inline-block' }}>
             {dict["get_started"] || "Get Started"}
           </Link>
         </div>
